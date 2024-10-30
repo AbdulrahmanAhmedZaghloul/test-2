@@ -37,15 +37,16 @@ function Navbar() {
                         <i className='text-black mx-2 fa-brands fa-linkedin'></i>
                         <i className='text-black mx-2 fa-brands fa-whatsapp'></i>
                         <Link to={'/'} className='ms-auto flex  md:hidden lg:hidden justify-center'>
-                            <img className="ms-auto flex md:hidden lg:hidden justify-center rotate w-8" src={WAT2} alt="" />
+                            <img className="ms-auto flex md:hidden lg:hidden justify-center  w-8" src={WAT2} alt="" />
                         </Link>
                     </div>
                 </div>
                 <div className="container flex justify-between items-center px-5 mx-auto">
                     <NavbarSidebar />
                     <Link to={'/'} className='w-full  mx-auto flex justify-center'>
-                        <img className="hidden mx-auto md:flex lg:flex justify-center rotate   w-20 py-5" src={WAT2} alt="" />
+                        <img className="hidden mx-auto md:flex lg:flex justify-center  fa-beat-fade  w-20 py-5" src={WAT2} alt="" />
                     </Link>
+                    {/* <i className="fa-solid fa-arrow-right "></i> */}
                     <div className="flex items-center">
                         <NavbarCart />
                     </div>

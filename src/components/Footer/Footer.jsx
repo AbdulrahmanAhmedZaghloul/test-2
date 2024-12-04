@@ -72,7 +72,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-center text-white text-[12px] pb-10 font-bold tracking-widest">© 2024 cench.in</p>
+        <p className="text-center text-white text-[12px] pb-10 font-bold tracking-widest">© 2024 urbann.eg</p>
       </footer>
     </React.Fragment>
   );

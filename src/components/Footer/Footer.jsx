@@ -29,7 +29,7 @@ export default function Footer() {
     <React.Fragment>
       <footer className="bg-gray-800 -mt-10">
         <div className="flex w-[90%] justify-between mx-auto py-10 flex-wrap">
-          <div className="md:w[30%] ">
+          <div className="md:w[30%]">
             <img className="w-1/4" src={footer} alt="" />
           </div>
           <div className="md:w[30%]">
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
           <div className="md:w[30%] ">
             <div className="">
-              <p className="text-white text-[11px] uppercase m-5 font-bold my-[0.30rem] mb-4">cench.in</p>
+              <p className="text-white text-[11px] uppercase m-5 font-bold my-[0.30rem] mb-4">urbann.eg</p>
               <p className="text-white text-[11px] uppercase m-5 font-bold my-[0.30rem] tracking-widest">
               A store and website that sells clothes with 
                 <p className="mb-1"></p>

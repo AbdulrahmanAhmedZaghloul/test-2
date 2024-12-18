@@ -6,7 +6,14 @@
   object-fit: cover; /* يجعل الفيديو يغطي الحاوية بالكامل */
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none; /* لإخفاء شريط التمرير في Internet Explorer وEdge */
+  scrollbar-width: none; /* لإخفاء شريط التمرير في Firefox */
+}
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* لإخفاء شريط التمرير في Chrome وSafari */
+}
 
 .Edition-img {
   width: 100%;

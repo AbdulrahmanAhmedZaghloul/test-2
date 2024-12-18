@@ -9,12 +9,14 @@ function Sections() {
     const [products, setProducts] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('https://backend.urbann9.com/api/category/getAll');
                 if (response.data.status === 'success') {
                     setCategories(response?.data?.data);
+                    console.log(response?.data?.data);
                 } else {
                     throw new Error('Failed to fetch categories');
                 }
@@ -25,6 +27,7 @@ function Sections() {
         fetchCategories();
     }, []);
 
+
     useEffect(() => {
         const fetchProducts = async () => {
             const fetchedProducts = {};
@@ -34,6 +37,7 @@ function Sections() {
                     if (response?.data?.status === 'success') {
                         fetchedProducts[category?.id] = response?.data?.data;
                     }
+                    console.log(response.data.data);
                 }
                 setProducts(fetchedProducts);
             } catch (error) {
@@ -47,7 +51,6 @@ function Sections() {
             fetchProducts();
         }
     }, [categories]);
-    console.log(products);
 
     if (error) return <p>Error: {error}</p>;
 
@@ -68,7 +71,6 @@ function Sections() {
                                     className="text-black w-[8rem] ms-2 text-[0.9rem] px-1 py-1 my-2 -skew-x-[15deg] border border-gray-600 tracking-widest text-center"
                                 >
                                     VIEW ALL
-
                                 </Link>
                             </div>
 
@@ -76,7 +78,7 @@ function Sections() {
                                 {products[category?.id]?.slice(0, 4).map((product) => (
                                     <div
                                         key={product?.id}
-                                        className="xl:w-[25%]  lg:w-[30%] md:w-[50%] w-[80%] p-5"
+                                        className="xl:w-[25%] lg:w-[30%] md:w-[50%] w-[80%] p-5"
                                     >
                                         <Link className='' to={`/product/${product.id}/${category?.id}`} state={{ product }}>
                                             <div className="relative border group m-3 overflow-hidden">
@@ -85,21 +87,32 @@ function Sections() {
                                                     src={product?.imag}
                                                     alt={product?.category_name}
                                                 />
-                                                <div className="absolute inset-0 bg-black opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                                                <div className="absolute inset-x-0 top-100 group-hover:top-0 flex flex-col justify-center transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
-                                                    <div className='flex flex-wrap'>
-                                                        {product.stock.map((size) => (
-                                                            <span
-                                                                key={size.size_id}
-                                                                className="bg-white w-fit text-gray-800 px-4 py-2 m-2 rounded-md shadow-lg hover:bg-gray-200 transition-all"
-                                                            >
-                                                                size :: {size.size}
-                                                            </span>
-                                                        ))}
-                                                    </div>
+                                                <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
+                                                    {product.images?.slice(0, 1).map((imgs) => (
+
+                                                        <div key={imgs.url} className="flex object-contain bg-white w-full justify-center items-center h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                            <img
+
+                                                                className="w-full object-contain mx-2"
+                                                                src={imgs.url}
+                                                                alt={product?.category_name}
+                                                            />
+                                                        </div>
+                                                    ))}
 
                                                 </div>
+                                                <div className="absolute inset-x-0 top-100 group-hover:top-0 flex flex-wrap justify-center transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+                                                    {product.stock.map((size) => (
+                                                        <span
+                                                            key={size.size_id}
+                                                            className="bg-white  w-fit text-gray-800 px-4 py-2 m-2 rounded-md shadow-lg hover:bg-gray-200 transition-all"
+                                                        >
+                                                            size :: {size.size}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             </div>
+
                                             <div className="px-2 mt-2 ">
                                                 <div className="flex justify-between mt-4 mx-auto text-center">
                                                     <p className="text-center text-gray-800 text-base font-normal">
@@ -109,11 +122,9 @@ function Sections() {
                                                         LE {product?.price}
                                                     </span>
                                                 </div>
-
-                                                <p className="text-gray-600 text-base mx-auto mt-3 tracking-[2.7px]">
+                                                <p className="text-gray-600 break-words whitespace-normal text-base mx-auto mt-3 tracking-[2.7px]">
                                                     {product.details}
                                                 </p>
-
                                             </div>
                                         </Link>
                                     </div>
@@ -126,4 +137,5 @@ function Sections() {
         </React.Fragment>
     );
 }
+
 export default Sections;

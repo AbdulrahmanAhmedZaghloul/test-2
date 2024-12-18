@@ -13,6 +13,11 @@ import Erorr from "./components/Erorr/Erorr";
  import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { CartProvider } from './context/CartContext';
 import AllProducts from './pages/AllProducts/AllProducts';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import './i18n/i18n';
 import Search from './pages/Search/Search';
